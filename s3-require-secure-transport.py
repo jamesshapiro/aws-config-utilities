@@ -8,21 +8,8 @@ response = s3_client.list_buckets()
 buckets = [bucket['Name'] for bucket in response['Buckets']]
 
 resource_statement = "arn:aws:s3:::{}/*"
-resource_statement2 = "arn:aws:s3:::{}/*"
 
 deny_unsecure = {
-    "Effect": "Deny",
-    "Principal": "*",
-    "Action": "*",
-    "Resource": "",
-    "Condition": {
-        "Bool": {
-            "aws:SecureTransport": "false"
-        }
-    }
-}
-
-deny_unsecure2 = {
     "Effect": "Deny",
     "Principal": "*",
     "Action": "*",
